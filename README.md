@@ -11,3 +11,5 @@ Redes parte 2: Montando um projeto do cliente até o provedor de serviços (10 h
 Front-end: Projeto de conclusão (06 horas)</br>
 
 jQuery: Domine a biblioteca mais popular do mercado parte 1 (12 horas)</br>
+
+jQuery: Avance na biblioteca mais popular do mercado parte 2 (12 horas)</br>
