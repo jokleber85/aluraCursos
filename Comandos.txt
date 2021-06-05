@@ -1,0 +1,150 @@
+REDES 01
+
+Prompt Comando:
+
+> ipconfig
+> ping "url"
+> traceroute "url"
+> nslookup "url"
+> ipconfig / all
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Configurando Rede 02 pc's Manualmente:
+
+> painel de contole > configurações de rede > ethernet > Central de Rede e Compartilhamento > Ethernet > Propriedades > Protocolo IP Versão 4(TCP/IPv4) > Propriedades > Usar o seguinte endereço IP: 192.168.3.2 
+> ping 192.168.3.1 (teste conexao em 192.168.3.1 e 192.168.3.2)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Teste Conexão Placa de Rede do Computador:
+
+> ipconfig 127.0.0.1
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PALAVRAS CHAVES:
+
+* servidor dns
+* protocolo ICMP:  responsável por mandar uma requisição (Echo Request) para máquina remota e esperar um retorno dessa máquina remota (Echo Reply)
+* TTL(Time to Live): informação dentro do pacote do IP que informa qual é a máxima quantidade de hops que minha informação pode passar antes de ser descartada. É a quantidade de máquinas que ela vai poder passar no caminho
+* traceroute: verificar a rota que a minha informação levou para chegar até a máquina de destino.
+* nslookup: Verificar traduções de nomes de domínios e endereços IP e isolar problemas entre as duas partes. Exemplo é saber o endereço IP de um domínio.
+* Desabilitar a resposta icmp
+* default gateway: é o endereço IP o qual será responsável por encaminhar pacotes para redes externas, é o IP do meu roteador.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Tradução do Endereço IP de Loopback para a url www.cursoderedesdaalura.com:
+
+Abrir bloco de notas como administrador e abrir o arquivo hosts localizado em
+> C:\Windows\System32\drivers\etc e insira na última linha o mapeamento 127.0.0.1 www.cursoderedesdaalura.com e teste o ping para essa url
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+RJ45:
+Padrão de Cores (T568A) 
+
+1 - branco / verde
+2 - verde
+3 - branco / laranja
+4 - azul
+5 - branco / azul
+6 - laranja
+7 - branco / marron
+8 - marron
+
+Padrão de Cores (T568B) 
+
+1 - branco / laranja
+2 - laranja
+3 - branco / verde
+4 - azul
+5 - branco / azul
+6 - verde	
+7 - branco / marron
+8 - marron
+
+Placas de redes iguais = Cabo Cruzado
+Placas de redes diferentes = Cabo Direto
+
+Padrão: 
+Pc    - envia dados nas pontas 1 e 2  / recebem nas pontas 3 e 6
+Hub -  envia dados nas pontas 3 e 6 / recebem nas pontas 1 e 2
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Sofwtares:
+
+> Cisco Packet Tracer
+> WireShark
+> Putty
+> meuip.com.br
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Procedimento Segurança Switch:
+
+> Port Security > Configurar a porta do Switch para aceitar um número máximo de endereços MAC, ao ultrapassar esse limite a porta é desligada e o ataque não teria sucesso
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Roteador Industrial:
+
+> Sempre usar na conexão de um computador com um roteador cabo cruzado 
+
+Configuração Portas:
+> enable > configure terminal > interface  "nome da porta 01" > no shutdown > exit
+> enable > configure terminal > interface  "nome da porta 02" > no shutdown > 
+
+Configurar o endereço IP:
+> enable > configure terminal > interface  "nome da porta 01" > ip address "ip criado para roteador  " "mascara ip"
+
+*show ip interface brief
+
+> ? > space (lista de comandos)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Faixas de IP
+
+Classe A: 000 -- 126; IP privado: 10.x.x.x 
+Classe B: 128 -- 191; IP privado: 172.16.x.x - 172.31.x.x
+Classe C: 192 -- 223; IP privado:	192.168.x.x
+ -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Configurando DHCP
+
+> enable > configure terminal > interface  "nome da porta 01" > no shutdown > exit
+> ip dhcp pool "nome" > network "endereço de rede" 192.168.0.0 "mascara" 255.255.255.0
+> default-router "192.168.0.1" "gateway padrão" > exit
+> interface "nome da porta 01" > ip adress 192.168.0.1 255.255.255.0
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+REDES 02
+
+Configuração VLAN switch (access)
+> enable > show vlan brief > configure terminal > vlan "numero" 10 > name "nome" VENDAS > exit
+> configure terminal > interface "nome da porta" > switchport mode access > switchport access vlan 10
+
+ou (com se fizer essa configuração com duas portas simultaneas)
+
+> configure terminal > interface range "nome da porta" 0/1 - 2 > switchport mode access > switchport access vlan 20
+
+Configuração VLAN switch (trunk)
+> enable > configure terminal > interface "nome da porta "> switch mode trunk
+> show interface trunk
+
+Configuração Roteador para VLAN diferentes:
+- configurando DHCP para cada uma das vlan's
+> enable > configure terminal > interface  "nome da porta 01" > no shutdown > exit
+> ip dhcp pool "nome" > network "endereço de rede" 192.168.0.0 "mascara" 255.255.255.0
+> interface "nome da porta"0/0.1 > encapsulation dot1Q "numero da vlan " 10 > ip address 192.168.10.1 255.255.225.0
+
+- configurar no switch a porta de conexão com o roteador para vlan trunk
+- configurar no roteador ip gateway
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Calculo de ip de redes (exemplo entre parenteses): 
+* transformar a quantidade solicitada de ips em bínario (100 > 1100100)
+* contar a quantidade de bits referente aos número de ip solicitado (7 bits)
+* preencher a quantidade de bits da direita para a esquerda na máscara de rede com zero (???????? . ???????? . ???????? . ?0000000)
+* preencher o restante de bits na máscara de rede com (11111111.11111111.11111111.10000000)
+* quantidade de ip's disponíveis (   (2^7)-2 = 126 próximo a 100   )
+* converter a máscara de rede de binário para decimal (255.255.255.128)
+* mudar a notação de classe CIDR (172.16.2.0)
+-- contar a quantidade de bits 1 da máscara de rede (11111111.11111111.11111111.10000000 = 25)
+-- resultado (172.16.2.0 / 25 ou 172.16.2.126) 
+* ip de broadcast (172.16.3.255)
+* dividir em sub-redes
+-- 1º passo: transformar a máscara de rede em binário (255.255.255.128 > 11111111.11111111.11111111.10000000) 
+-- 2º passo: verificar onde temos a sequência do bit 1 para o bit 0 (primeira posição do quarto octeto)
+-- 3º passo: transformar a posição do bit 1 para decimal (10 > 2)
+-- ip sub-rede 1: 172.16.2.0 ------------------- ip broadcast sub-rede: 172.16.2.127 
+-- ip sub-rede 2: 172.16.2.128 --------------- ip broadcast sub-rede: 172.16.2.255
+-- ip sub-rede 3: 172.16.3.0 ------------------- ip broadcast sub-rede: 172.16.3.127
+-- ip sub-rede N: 172.16.3.128 --------------- ip broadcast sub-rede: 172.16.3.255
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Definir o Switch como root no STP
+- enable > configute terminal > spanning-tree > vlan (vlan 10) priority 0
