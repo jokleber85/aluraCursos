@@ -17,3 +17,5 @@ jQuery: Avance na biblioteca mais popular do mercado parte 2 (12 horas)</br>
 JavaScript: Projeto de conclusão (05 horas)</br>
 
 Node.js Parte 1: Inovando com JavaScript no backend (12 horas)</br>
+
+TypeScript parte 1: Evoluindo seu Javascript (08 horas)</br>
