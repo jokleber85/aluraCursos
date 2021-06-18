@@ -26,7 +26,8 @@ Criar arquivo de configuração do TypeScript "tsconfig.json"</br>
         "target": "es6",
         "outDir": "js",
         "noEmitOnError": true, // não deixa gerar arquivo pasta js enquanto houver erro no typescript   
-        "noImplicitAny": true // não deixa adotar o any (tipo nenhum)
+        "noImplicitAny": true, // não deixa adotar o any (tipo nenhum)
+        "removeComments": true // remover comentários dos arquivos js, feitos nos arquivos ts
     },
     "include": [
         "ts/**/*"
@@ -56,6 +57,12 @@ Configurar compilador para rodar o TypeScript "package.json"</br>
     "typescript": "^2.3.2"
   }
 }
+```
+</br>
+
+Instalando dependecia para que o TypeScript reconheça os comandos em JQUERY (TypeScripDefinition-TSD)
+```js
+npm install @types/jquery@2.0.42 --save-dev
 ```
 </br>
 
