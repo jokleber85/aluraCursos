@@ -1,21 +1,74 @@
 Alura
 
-Cursos Diversos</br>
+TypeScript parte 2: Mais técnicas e boas práticas (10 horas)
+## <br />
 
-Bootstrap 4: Criando uma landing page responsiva (08 horas)</br>
+Configuração do Arquivo package.json dentro pasta aluraBank</br> 
+```js
+  npm init;
+```
+</br>
 
-Redes parte 1: Introdução, Conceitos e Prática (10 horas)</br>
+Instalação do TypeScript dentro da pasta aluraBank</br>
+```js
+  npm install typescript@2.3.2 --save-dev;
+```
+</br>
 
-Redes parte 2: Montando um projeto do cliente até o provedor de serviços (10 horas)</br>
+* Alterar nome da pasta "js" para "ts"
+* Alterar extensão do arquivo "app.js" para "app.ts"
+* Alterar extensão do arquivo "Negociacao.js" para "Negociacao.ts" 
 
-Front-end: Projeto de conclusão (06 horas)</br>
+Criar arquivo de configuração do TypeScript "tsconfig.json"</br>
+```js
+{
+    "compilerOptions": {
+        "target": "es6",
+        "outDir": "js",
+        "noEmitOnError": true, // não deixa gerar arquivo pasta js enquanto houver erro no typescript   
+        "noImplicitAny": true, // não deixa adotar o any (tipo nenhum)
+        "removeComments": true // remover comentários dos arquivos js, feitos nos arquivos ts
+    },
+    "include": [
+        "ts/**/*"
+    ]
+}
+```
+</br>
 
-jQuery: Domine a biblioteca mais popular do mercado parte 1 (12 horas)</br>
+Configurar compilador para rodar o TypeScript "package.json"</br>
+```js
+{
+  "name": "alurabank",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "tsc",
+    "start": "tsc -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^2.3.2"
+  }
+}
+```
+</br>
 
-jQuery: Avance na biblioteca mais popular do mercado parte 2 (12 horas)</br>
+Instalando dependecia para que o TypeScript reconheça os comandos em JQUERY (TypeScripDefinition-TSD)
+```js
+npm install @types/jquery@2.0.42 --save-dev
+```
+</br>
 
-JavaScript: Projeto de conclusão (05 horas)</br>
-
-Node.js Parte 1: Inovando com JavaScript no backend (12 horas)</br>
-
-TypeScript parte 1: Evoluindo seu Javascript (08 horas)</br>
+Rodar o compilador</br>
+```js
+// npm run compile
+npm start
+```
+</br>
