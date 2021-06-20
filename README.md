@@ -72,3 +72,117 @@ Rodar o compilador</br>
 npm start
 ```
 </br>
+
+## <br />
+
+Continuação do curso:</br>
+
+Carregamento do loader de modulos</br>
+
+Adicionar lib ao index.html
+```html
+    <script src="lib/system.js"></script>
+    <script>
+        System.defaultJSExtensions = true;
+        System.import('js/app.js').catch(err => console.error(err));
+    </script>
+```
+<br/>
+
+Configurar o tsconfig.json para reconhecer o modelo de modules
+```js
+{
+    "compilerOptions": {
+        "target": "es6",
+        "outDir": "js",
+        "noEmitOnError": true,
+        "noImplicitAny": true,
+        "removeComments": true,
+        "module": "System",
+        "strictNullChecks": true // bloquear tipo undefined e null como parametro
+    },
+    "include": [
+        "ts/**/*"
+    ]
+}
+```
+</br>
+
+Instalação do servidor para rodar o projeto em tempo real:
+```js
+npm install lite-server@2.3.0 --save-dev
+```
+</br>
+
+Configurar o servidor do projeto:
+```js
+{
+  "name": "alurabank",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "tsc",
+    "start": "tsc -w",
+    "server": "lite-server --baseDir=aluraBank"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jquery": "^2.0.42",
+    "lite-server": "^2.3.0",
+    "typescript": "^2.3.2"
+  }
+}
+```
+</br>
+
+Rodar o servidor do projeto:</br>
+```js
+npm run server
+```
+</br>
+
+Instalar serviço para rodar ambos compiladores (TypeScript e LiteServer) com apenas uma instrução:</br>
+```js
+npm install concurrently@3.4.0 --save-dev
+```
+<br>
+
+Configurar o concurrently do projeto:</br>
+```js
+{
+  "name": "alurabank",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "tsc",
+    "watch": "tsc -w", //"start": "tsc -w",
+    "server": "lite-server --baseDir=app",
+    "start": "concurrently \"npm run watch\" \"npm run server\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jquery": "^2.0.42",
+    "concurrently": "^3.4.0",
+    "lite-server": "^2.3.0",
+    "typescript": "^2.3.2"
+  }
+}
+```
+</br>
+
+Rodar o concurrently do projeto:</br>
+```js
+npm start
+```
+</br>
+
+
