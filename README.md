@@ -89,7 +89,7 @@ Adicionar lib ao index.html
 ```
 <br/>
 
-Configurar o tsconfig.json para reconhecer o modelo de modules
+Configuração o tsconfig.json para reconhecer o modelo de modules + boquear undefined ou null + utilização decorators
 ```js
 {
     "compilerOptions": {
@@ -100,6 +100,7 @@ Configurar o tsconfig.json para reconhecer o modelo de modules
         "removeComments": true,
         "module": "System",
         "strictNullChecks": true // bloquear tipo undefined e null como parametro
+        "experimentalDecorators": true // permitir a utilização decorators
     },
     "include": [
         "ts/**/*"
@@ -185,4 +186,10 @@ npm start
 ```
 </br>
 
+Rodar o servidor da API em outro terminal paralelo(aluraBank/api) </br>
+(Endereço acesso dados API)[http://localhost:8080/dados] :</br>
+```js
+npm start
+```
+</br> 
 

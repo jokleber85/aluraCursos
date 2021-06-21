@@ -1,3 +1,5 @@
+import {logarTempoDeExecucao} from "../helpers/decorators/index";
+
 export abstract class View<T> {
 
     private _elemento: Element; //protected _elemento: JQuery;
@@ -9,6 +11,8 @@ export abstract class View<T> {
         this._elemento = document.querySelector(seletor); //this._elemento = $(seletor);
         this._escapar = escapar;
     }
+
+    @logarTempoDeExecucao(false)
 
     update(model: T) {
 
