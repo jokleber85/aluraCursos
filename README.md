@@ -21,3 +21,5 @@ Node.js Parte 1: Inovando com JavaScript no backend (12 horas)</br>
 TypeScript parte 1: Evoluindo seu Javascript (08 horas)</br>
 
 TypeScript parte 2: Mais técnicas e boas práticas (10 horas)</br>
+
+JavaScript: Programando na linguagem da web (20 horas)</br>
