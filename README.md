@@ -19,3 +19,13 @@ const cliente = {
 }
 ```
 </br>
+
+Prototype:
+```js 
+const arr = [1, 2, 3].
+arr.__proto__; // lista de propriedades do array
+
+const obj = {a: 1, b: 2}.
+obj.__proto__; // lista de propriedades do array
+```
+</br>
