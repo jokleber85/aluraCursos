@@ -1,6 +1,6 @@
 Alura
 
-Cursos Diversos</br>
+Cursos Diversos [Certificado](https://cursos.alura.com.br/user/jo-kleber85/fullCertificate/12e7c4dc424aa0c098fe0d24da953687) </br>
 
 Bootstrap 4: Criando uma landing page responsiva (08 horas)</br>
 
@@ -25,5 +25,3 @@ TypeScript parte 2: Mais técnicas e boas práticas (10 horas)</br>
 JavaScript: Programando na linguagem da web (20 horas)</br>
 
 Fundamentos do JavaScript: Objetos (10 horas)</br>
-
-[Certificado](https://cursos.alura.com.br/user/jo-kleber85/fullCertificate/12e7c4dc424aa0c098fe0d24da953687)
