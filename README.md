@@ -25,3 +25,5 @@ TypeScript parte 2: Mais técnicas e boas práticas (10 horas)</br>
 JavaScript: Programando na linguagem da web (20 horas)</br>
 
 Fundamentos do JavaScript: Objetos (10 horas)</br>
+
+Live Coding Flutter</br>
